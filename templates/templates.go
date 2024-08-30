@@ -3,7 +3,13 @@ package templates
 import (
 	"net/http"
 	"text/template"
+
+	"github.com/mboldt/assignments/student"
 )
+
+type IndexData struct {
+	Students []*student.Student
+}
 
 func Render(w http.ResponseWriter, name string, data interface{}) {
 	// TODO optimize so we don't read file every time.

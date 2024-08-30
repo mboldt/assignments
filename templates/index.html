@@ -1,3 +1,13 @@
 {{template "header.html" .}}
 Hello, world!
+<table>
+    <tr>
+        <th>Student</th>
+    </tr>
+    {{range .Students}}
+    <tr>
+        <td>{{.Name}}</td>
+    </tr>
+    {{end}}
+</table>
 </body>
