@@ -2,16 +2,16 @@ package datastore
 
 import "encoding/json"
 
-func Serialize[T any](data T) (string, error) {
+func Serialize[T any](data T) ([]byte, error) {
 	b, err := json.Marshal(data)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	return string(b), nil
+	return b, nil
 }
 
-func Deserialize[T any](data string) (T, error) {
+func Deserialize[T any](data []byte) (T, error) {
 	var ret T
-	err := json.Unmarshal([]byte(data), &ret)
+	err := json.Unmarshal(data, &ret)
 	return ret, err
 }
