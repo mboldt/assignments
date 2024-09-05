@@ -1,9 +1,8 @@
-package datastore_test
+package datastore
 
 import (
 	"testing"
 
-	"github.com/mboldt/assignments/datastore"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -15,10 +14,10 @@ func TestSeailalize(t *testing.T) {
 			{Data: "bar"},
 		}
 		for _, tt := range tests {
-			ser, err := datastore.Serialize(tt)
+			ser, err := serialize(tt)
 			assert.NoError(t, err)
 			t.Logf("%v serilaized to %s", tt, ser)
-			des, err := datastore.Deserialize[Str](ser)
+			des, err := deserialize[Str](ser)
 			assert.NoError(t, err)
 			assert.Equal(t, tt, des)
 		}

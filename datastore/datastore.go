@@ -3,17 +3,17 @@ package datastore
 import "github.com/mboldt/assignments/student"
 
 type Datastore struct {
-	students []*student.Student
+	Students []*student.Student `json:"students"`
 }
 
 func New() *Datastore {
-	return &Datastore{students: []*student.Student{}}
+	return &Datastore{Students: []*student.Student{}}
 }
 
 func (d *Datastore) AddStudent(s *student.Student) {
-	d.students = append(d.students, s)
+	d.Students = append(d.Students, s)
 }
 
 func (d *Datastore) ListStudents() []*student.Student {
-	return d.students
+	return d.Students
 }

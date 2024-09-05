@@ -7,7 +7,7 @@ import (
 )
 
 func Store(w io.Writer, data any) error {
-	ser, err := Serialize(data)
+	ser, err := serialize(data)
 	if err != nil {
 		return fmt.Errorf("failed to serialize data: %w", err)
 	}
@@ -25,7 +25,7 @@ func Read[T any](r io.Reader) (T, error) {
 	if err != nil {
 		return data, fmt.Errorf("failed to read data: %w", err)
 	}
-	data, err = Deserialize[T](b)
+	data, err = deserialize[T](b)
 	if err != nil {
 		return data, fmt.Errorf("failed to deserialize data: %w", err)
 	}
